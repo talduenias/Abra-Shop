@@ -3,34 +3,7 @@ import styled from "styled-components";
 import { useMedia } from "../../../Hooks/useMedia";
 import menuImage from "../../../Images/menu.png";
 import Drawer from "../Drawer";
-import LogoImage from "../../../Images/logo-black.png";
-import closeImage from "../../../Images/x-icon.png";
-const DrawerMenu = ({ menuItems, onClose }) => {
-  return (
-    <>
-      <DrawerMenuWrapper>
-        <img src={LogoImage} alt="Logo"></img>
-        <StyledCloseButton
-          onClick={onClose}
-          src={closeImage}
-          alt="Close button"
-        ></StyledCloseButton>
-      </DrawerMenuWrapper>
-    </>
-  );
-};
-
-const DrawerMenuWrapper = styled.div`
-  padding-left: 18px;
-  padding-top: 20px;
-  display: flex;
-`;
-
-const StyledCloseButton = styled.img`
-  margin-left: auto;
-  padding-right: 16px;
-  cursor: pointer;
-`;
+import DrawerMenu from "./DrawerMenu";
 
 const Menu = ({
   menuItems,
@@ -59,7 +32,12 @@ const Menu = ({
             ></Hamburger>
             {isDrawerOpen && (
               <Drawer>
-                <DrawerMenu onClose={() => setIsDrawerOpen(false)} />
+                <DrawerMenu
+                  onItemChanged={onMenuItemChanged}
+                  activeId={activeId}
+                  menuItems={menuItems}
+                  onClose={() => setIsDrawerOpen(false)}
+                />
               </Drawer>
             )}
           </>
@@ -67,7 +45,8 @@ const Menu = ({
         {breakPoint?.name === "desktop" &&
           menuItems.map((item) => {
             return (
-              <MenuItem key={item.id}
+              <MenuItem
+                key={item.id}
                 onClick={() => onMenuItemChanged(item)}
                 active={activeId === item.id}
                 href="#"

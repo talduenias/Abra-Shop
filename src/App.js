@@ -4,7 +4,7 @@ import logo from './logo.svg';
 
 function App() {
   return (
-    <div style={{"background-color": "black"}} className="App">
+    <div className="App">
       <Header></Header>
     </div>
   );
