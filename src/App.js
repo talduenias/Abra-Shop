@@ -11,9 +11,7 @@ function App() {
         name="Black T-shirt"
         price="89 NIS"
       />
-
-    </div>
-  );
+  </div>)
 }
 
 export default App;

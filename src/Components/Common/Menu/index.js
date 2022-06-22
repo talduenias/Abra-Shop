@@ -4,7 +4,6 @@ import { useMedia } from "../../../Hooks/useMedia";
 import menuImage from "../../../Images/menu.png";
 import Drawer from "../Drawer";
 import DrawerMenu from "./DrawerMenu";
-
 const Menu = ({
   menuItems,
   activeId,

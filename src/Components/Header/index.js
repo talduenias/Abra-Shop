@@ -3,6 +3,7 @@ import LogoImage from "../../Images/logo.png";
 import AccountImage from "../../Images/account_circle.png";
 import Menu from "../Common/Menu";
 import { useState } from "react";
+import { deviceSize } from "../../constants";
 
 const defaultMenuConfig = [
   { id: 1, name: "BestSellers"},
@@ -13,7 +14,6 @@ const defaultMenuConfig = [
 ];
 
 const DEFAULT_MENU_ITEM = 1;
-
 const Header = () => {
     
   const onMenuItemChanged = (item) => {
@@ -36,13 +36,13 @@ const StyledHeaderWrapper = styled.header`
   padding-left: 64px;
 
   align-items: flex-end;
-  @media (max-width: 880px) {
+  @media (max-width: ${deviceSize.mobile}) {
     padding-left: 18px;
   }
 `;
 
 const StyledMenu = styled(Menu)`
-    @media(max-width: 880px) {
+    @media(max-width: ${deviceSize.mobile}) {
         padding-right: 66px;
         order: -1;
     }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const Button = ({ children, className }) => {
-  return <StyledButtonWrapper className={className}>{children}</StyledButtonWrapper>;
+const Button = ({ children, className, ...props}) => {
+  return <StyledButtonWrapper {...props} className={className}>{children}</StyledButtonWrapper>;
 };
 
 const StyledButtonWrapper = styled.button`
@@ -15,6 +15,16 @@ const StyledButtonWrapper = styled.button`
   letter-spacing: 0.72px;
   color: #000;
   padding: 12px 0;
+  :hover {
+    background-color: #000;
+    color: #fff; 
+  }
+
+  :disabled {
+    border: solid 1px #808080;
+    background-color: #808080;
+    color: #fff;
+  }
 `;
 
 export default Button;
