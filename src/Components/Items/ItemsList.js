@@ -39,6 +39,22 @@ const ItemsList = () => {
         name="Black T-shirt"
         price="89 NIS"
       />
+
+<ItemCard
+        image="https://elad-test-1.s3.amazonaws.com/note.png"
+        name="Black T-shirt"
+        price="89 NIS"
+      />
+      <ItemCard
+        image="https://elad-test-1.s3.amazonaws.com/note.png"
+        name="Black T-shirt"
+        price="89 NIS"
+      />
+      <ItemCard
+        image="https://elad-test-1.s3.amazonaws.com/note.png"
+        name="Black T-shirt"
+        price="89 NIS"
+      />
     </ItemsListWrapper>
   );
 };
