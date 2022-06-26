@@ -19,8 +19,12 @@ const StyledEmptyCartWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 78px);
+  height: 100%;
+  top: 0px;
   gap: 24px;
+  position: absolute;
+  width: 100%;
+  left:0;
 
   @media (max-width: ${deviceSize.mobile}) {
     gap: 16px;
@@ -30,6 +34,7 @@ const StyledEmptyCartWrapper = styled.div`
 const StyledEmptyCartImage = styled.img`
   width: 239px;
   height: 200px;
+
   @media (max-width: ${deviceSize.mobile}) {
     width: 167px;
     height: 140px;

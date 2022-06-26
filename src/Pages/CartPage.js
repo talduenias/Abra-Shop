@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import { deviceSize } from "../constants";
 import EmptyCart from "../Components/Cart/EmptyCart";
+import CartItem from "../Components/Cart/CartItem";
 const Cart = () => {
   return (
     <StyledCartWrapper>
       <StyledCartTitle>My cart</StyledCartTitle>
-      <EmptyCart />
+      <CartItem
+        name="Black Bottle"
+        price={10}
+        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
+        quantity={5}
+      />
+
+      {/* <EmptyCart /> */}
     </StyledCartWrapper>
   );
 };
@@ -18,7 +26,7 @@ const StyledCartWrapper = styled.div`
   padding: 40px 24px 0;
   font-family: Assistant;
   height: calc(100vh - 78px - 40px);
-
+  position: relative;
   @media (max-width: ${deviceSize.mobile}) {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16);
     min-height: 393px;
