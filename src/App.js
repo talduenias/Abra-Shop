@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Header from "./Components/Header";
-import ItemCard from "./Components/ItemCard";
-import ItemsList from "./Components/ItemsList";
+import ItemCard from "./Components/Items/ItemCard";
+import ItemsList from "./Components/Items/ItemsList";
 import logo from "./logo.svg";
-import Cart from "./Pages/Cart";
+import CartPage from "./Pages/CartPage";
 import ItemsPage from "./Pages/ItemsPage";
 import { deviceSize } from "./constants";
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <StyledContentWrapper>
         <ItemsPage />
-        <Cart />
+        <CartPage />
       </StyledContentWrapper>
     </div>
   );

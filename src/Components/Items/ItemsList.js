@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import ItemCard from "./ItemCard"
-import { deviceSize } from "../constants"
+import { deviceSize } from "../../constants"
 const ItemsList = () => {
     return (<ItemsListWrapper>
       <ItemCard

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ItemsList from "../Components/ItemsList";
+import ItemsList from "../Components/Items/ItemsList";
 import { deviceSize } from "../constants";
 const ItemsPage = () => {
   return (
@@ -13,12 +13,11 @@ const ItemsPage = () => {
 const StyledItemsPageWrapper = styled.div`
   padding: 64px 24px 105px 24px;
   overflow-y: auto;
-  height: calc(100vh - 78px - 64px - 105px);
+  height: 100%;
 
   @media (max-width: ${deviceSize.mobile}) {
     padding: 36px 18px 0px 18px;
-
-}
+  }
 `;
 
 const StyledCategoryName = styled.h1`

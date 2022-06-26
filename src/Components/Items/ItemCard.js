@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Button from "./Common/Button";
-import { deviceSize } from "../constants";
+import Button from "../Common/Button"
+import { deviceSize } from "../../constants";
 const ItemCard = ({ image, name, price }) => {
   return (
     <>
