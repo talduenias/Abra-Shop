@@ -1,59 +1,16 @@
 import styled from "styled-components";
 import CartItem from "./CartItem";
 import { deviceSize } from "../../constants";
-const CartItems = () => {
+const CartItems = ({ cart, setCart }) => {
+  const handleRemove = (item) => {
+    const data = cart.filter((cartItem) => cartItem.id !== item.id);
+    setCart([...data]);
+  };
   return (
     <StyledCartItemsWrapper>
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-
+      {cart.map((item) => (
+        <CartItem item={item} handleRemove={handleRemove} />
+      ))}
     </StyledCartItemsWrapper>
   );
 };
@@ -64,7 +21,6 @@ const StyledCartItemsWrapper = styled.div`
   gap: 26px;
   margin-top: 34px;
   overflow-y: auto;
-  
 
   @media (max-width: ${deviceSize.mobile}) {
     padding: 0px 18px;
@@ -73,7 +29,6 @@ const StyledCartItemsWrapper = styled.div`
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-
   }
 `;
 

@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import * as ReactDOM from "react-dom";
 
-const Drawer = ({children}) => {
+const Drawer = ({ children }) => {
   return ReactDOM.createPortal(
     <StyledPageWrapper>
-      <StyledDrawerWrapper>
-        {children}
-      </StyledDrawerWrapper>
+      <StyledDrawerWrapper>{children}</StyledDrawerWrapper>
     </StyledPageWrapper>,
     document.body
   );
@@ -19,7 +17,6 @@ const StyledPageWrapper = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 10;
-
 `;
 const StyledDrawerWrapper = styled.div`
   position: absolute;

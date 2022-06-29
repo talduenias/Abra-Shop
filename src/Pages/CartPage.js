@@ -1,23 +1,33 @@
 import styled from "styled-components";
 import { deviceSize } from "../constants";
 import EmptyCart from "../Components/Cart/EmptyCart";
-import CartItems from "../Components/Cart/CartItems";
+import CartItem from "../Components/Cart/CartItems";
 import Button from "../Components/Common/Button";
-const Cart = () => {
+import ItemCard from "../Components/Items/ItemCard";
+import { useEffect, useState } from "react";
+import CartItems from "../Components/Cart/CartItems";
+const CartPage = ({ cart, setCart }) => {
+
+
   return (
     <StyledCartWrapper>
       <CartItemsWrapper>
         <StyledCartTitle>My cart</StyledCartTitle>
-        <CartItems></CartItems>
+        {cart.length === 0 ? (
+          <EmptyCart />
+        ) : (
+          <>
+            <CartItems cart={cart} setCart={setCart} />
 
-        {/* <EmptyCart /> */}
-        <StyledCheckoutWrapper>
-          <StyledTotalWrapper>
-            <StyledSubtotal>SubTotal</StyledSubtotal>
-            <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
-          </StyledTotalWrapper>
-          <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
-        </StyledCheckoutWrapper>
+            <StyledCheckoutWrapper>
+              <StyledTotalWrapper>
+                <StyledSubtotal>SubTotal</StyledSubtotal>
+                <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
+              </StyledTotalWrapper>
+              <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
+            </StyledCheckoutWrapper>
+          </>
+        )}
       </CartItemsWrapper>
     </StyledCartWrapper>
   );
@@ -58,7 +68,7 @@ const StyledCartWrapper = styled.div`
   background-color: #fff;
   padding: 40px 24px 0;
   font-family: Assistant;
-  height: calc(100vh - 78px - 40px );
+  height: calc(100vh - 78px - 40px);
   position: relative;
   @media (max-width: ${deviceSize.mobile}) {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16);
@@ -79,4 +89,4 @@ const StyledCartTitle = styled.h1`
   @media (max-width: ${deviceSize.mobile}) {
   }
 `;
-export default Cart;
+export default CartPage;

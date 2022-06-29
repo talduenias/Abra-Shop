@@ -1,11 +1,29 @@
 import styled from "styled-components";
 import ItemsList from "../Components/Items/ItemsList";
 import { deviceSize } from "../constants";
-const ItemsPage = () => {
+import { useLocation } from "react-router-dom";
+
+const ItemsPage = ({ items, setCart ,cart}) => {
+  const location = useLocation();
+  console.log(location);
+  const catagoryToShow = () => {
+    if (location.pathname === "/") {
+      return "Best-Seller";
+    } else {
+      return location.pathname.substring(1);
+    }
+  };
+
+  console.log(catagoryToShow);
+  const catagortName = items.map((item) => console.log(item.name));
+  const filterData = items.filter((item) =>
+    item.catagories.includes(catagoryToShow().toLowerCase())
+  );
+
   return (
     <StyledItemsPageWrapper>
-      <StyledCategoryName>Best sellers</StyledCategoryName>
-      <ItemsList />
+      <StyledCategoryName>{catagoryToShow()}</StyledCategoryName>
+      <ItemsList items={filterData} setCart={setCart} cart={cart}/>
     </StyledItemsPageWrapper>
   );
 };
@@ -18,8 +36,7 @@ const StyledItemsPageWrapper = styled.div`
   @media (max-width: ${deviceSize.mobile}) {
     height: calc(100vh - 393px - 78px - 60px);
     padding: 36px 18px 0px 18px;
-
-}
+  }
 `;
 
 const StyledCategoryName = styled.h1`

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LogoImage from "../../../Images/logo-black.png";
 import closeImage from "../../../Images/x-icon.png";
 import logoutImage from "../../../Images/logout.png";
+import { NavLink } from "react-router-dom";
 
 const DrawerMenu = ({ activeId, menuItems, onClose, onItemChanged }) => {
   return (
@@ -17,6 +18,7 @@ const DrawerMenu = ({ activeId, menuItems, onClose, onItemChanged }) => {
       <StyledMenuItemsWrapper>
         {menuItems.map((item) => (
           <StyledMenuItem
+            to={`/${item.name}`}
             onClick={() => {
               onItemChanged(item);
               onClose();
@@ -69,7 +71,7 @@ const StyledCloseButton = styled.img`
   cursor: pointer;
 `;
 
-const StyledMenuItem = styled.a`
+const StyledMenuItem = styled(NavLink)`
   font-family: Assistant;
   font-size: 20px;
   font-weight: normal;

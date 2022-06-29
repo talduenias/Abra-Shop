@@ -1,14 +1,31 @@
 import styled from "styled-components";
-import Button from "../Common/Button"
+import Button from "../Common/Button";
 import { deviceSize } from "../../constants";
-const ItemCard = ({ image, name, price }) => {
+import { useEffect, useState } from "react";
+const ItemCard = ({ item, setCart, cart }) => {
+  const addToBag = (item) => {
+    const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
+    console.log(itemIndex);
+    if (itemIndex >= 0) {
+      if (item.quantity > item.order) {
+        cart[itemIndex].order++;
+        console.log(item);
+        setCart([...cart]);
+      }
+    } else {
+      item.order++;
+      setCart((prevState) => [...prevState, item]);
+    }
+  };
   return (
     <>
       <StyledItemWrapper>
-        <StyledItemImage src={image}></StyledItemImage>
-        <StyledItemName>{name}</StyledItemName>
-        <StyledItemPrice>{price}</StyledItemPrice>
-        <StyledAddToBagButton>ADD TO BAG</StyledAddToBagButton>
+        <StyledItemImage src={item.image}></StyledItemImage>
+        <StyledItemName>{item.name}</StyledItemName>
+        <StyledItemPrice>{item.price}</StyledItemPrice>
+        <StyledAddToBagButton onClick={() => addToBag(item)}>
+          ADD TO BAG
+        </StyledAddToBagButton>
       </StyledItemWrapper>
     </>
   );

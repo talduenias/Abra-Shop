@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import DeleteButtonImage from "../../Images/delete.svg";
 import { deviceSize } from "../../constants";
-const CartItem = ({ name, price, image, quantity }) => {
+const CartItem = ({ item, handleRemove }) => {
   return (
     <StyledCartItemWrapper>
-      <StyledCartItemImage src={image}></StyledCartItemImage>
+      <StyledCartItemImage src={item.image}></StyledCartItemImage>
       <StyledCartItemDetailsWrapper>
-        <StyledCartItemTitle>{name}</StyledCartItemTitle>
-        <StyledCartItemPrice>{price} ILS</StyledCartItemPrice>
-        <StyledCartItemQuantity>- {quantity} +</StyledCartItemQuantity>
+        <StyledCartItemTitle>{item.name}</StyledCartItemTitle>
+        <StyledCartItemPrice>{item.price} ILS</StyledCartItemPrice>
+        <StyledCartItemQuantity>- {item.order} +</StyledCartItemQuantity>
       </StyledCartItemDetailsWrapper>
-      <StyledDeleteButtonImage src={DeleteButtonImage} />
+      <StyledDeleteButtonImage
+        src={DeleteButtonImage}
+        onClick={() => handleRemove(item)}
+      />
     </StyledCartItemWrapper>
   );
 };

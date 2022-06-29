@@ -1,60 +1,14 @@
 import styled from "styled-components";
 import ItemCard from "./ItemCard";
 import { deviceSize } from "../../constants";
-const ItemsList = () => {
+import { useEffect, useState } from "react";
+const ItemsList = ({ items, setCart,cart }) => {
   return (
     <ItemsListWrapper>
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="890 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-
-<ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
-      <ItemCard
-        image="https://elad-test-1.s3.amazonaws.com/note.png"
-        name="Black T-shirt"
-        price="89 NIS"
-      />
+      {console.log(items)}
+      {items.map((item, index) => (
+        <ItemCard key={index} item={item} cart={cart} setCart={setCart} />
+      ))}
     </ItemsListWrapper>
   );
 };
@@ -69,8 +23,7 @@ const ItemsListWrapper = styled.div`
   @media (max-width: ${deviceSize.mobile}) {
     gap: 20px 18px;
     margin-bottom: 89px;
-
-}
+  }
 `;
 
 export default ItemsList;

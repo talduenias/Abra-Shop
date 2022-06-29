@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import EmptyCartImage from "../../Images/empty-cart.svg";
 import { deviceSize } from "../../constants";
+import { useEffect, useState } from "react";
 
 const EmptyCart = () => {
   return (
@@ -24,7 +25,7 @@ const StyledEmptyCartWrapper = styled.div`
   gap: 24px;
   position: absolute;
   width: 100%;
-  left:0;
+  left: 0;
 
   @media (max-width: ${deviceSize.mobile}) {
     gap: 16px;
@@ -39,7 +40,6 @@ const StyledEmptyCartImage = styled.img`
     width: 167px;
     height: 140px;
   }
-
 `;
 
 const StyledEmptyCartMessage = styled.span`
