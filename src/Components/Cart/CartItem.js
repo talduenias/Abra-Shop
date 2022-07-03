@@ -1,14 +1,47 @@
 import styled from "styled-components";
 import DeleteButtonImage from "../../Images/delete.svg";
 import { deviceSize } from "../../constants";
-const CartItem = ({ item, handleRemove }) => {
+import { queryAllByAttribute } from "@testing-library/react";
+import { useState } from "react";
+const CartItem = ({ item, handleRemove, cart, setCart }) => {
+  const minusButton = (item) => {
+    if (item.order > 1) {
+      item.order--;
+
+      setCart([...cart]);
+    }
+
+    console.log(cart, "cart");
+    // alert("go to trash");
+  };
+
+  const plusButton = (item) => {
+    if (item.order === item.quantity) {
+      alert("out of stock");
+    } else {
+      item.order++;
+
+      setCart([...cart]);
+    }
+    console.log(cart, "cart");
+    // alert("go to trash");
+  };
+  console.log(item.order);
   return (
     <StyledCartItemWrapper>
       <StyledCartItemImage src={item.image}></StyledCartItemImage>
       <StyledCartItemDetailsWrapper>
         <StyledCartItemTitle>{item.name}</StyledCartItemTitle>
         <StyledCartItemPrice>{item.price} ILS</StyledCartItemPrice>
-        <StyledCartItemQuantity>- {item.order} +</StyledCartItemQuantity>
+        <StyledCartItemQuantity>
+          <StyledMinusButton onClick={() => minusButton(item)}>
+            -
+          </StyledMinusButton>
+          {item.order}{" "}
+          <StyledPlusButton onClick={() => plusButton(item)}>
+            +
+          </StyledPlusButton>
+        </StyledCartItemQuantity>
       </StyledCartItemDetailsWrapper>
       <StyledDeleteButtonImage
         src={DeleteButtonImage}
@@ -37,6 +70,7 @@ const StyledCartItemWrapper = styled.div`
 const StyledCartItemImage = styled.img`
   width: 100px;
   height: 100px;
+
   @media (max-width: ${deviceSize.mobile}) {
     position: relative;
     width: 125px;
@@ -68,6 +102,33 @@ const StyledCartItemPrice = styled.span`
   }
 `;
 
+const StyledMinusButton = styled.button`
+  padding: 0px 5px;
+  margin-right: 5px;
+  border: none;
+  background-color: white;
+  font-family: Assistant;
+  font-size: 20px;
+  line-height: 1;
+  color: #808285;
+  @media (max-width: ${deviceSize.mobile}) {
+    margin-top: 12px;
+  }
+`;
+
+const StyledPlusButton = styled.button`
+  padding: 0px 5px;
+  margin-left: 5px;
+  border: none;
+  background-color: white;
+  font-family: Assistant;
+  font-size: 20px;
+  line-height: 1;
+  color: #808285;
+  @media (max-width: ${deviceSize.mobile}) {
+    margin-top: 12px;
+  }
+`;
 const StyledCartItemQuantity = styled.span`
   color: #808285;
   margin-top: auto;

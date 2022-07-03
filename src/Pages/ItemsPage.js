@@ -3,9 +3,9 @@ import ItemsList from "../Components/Items/ItemsList";
 import { deviceSize } from "../constants";
 import { useLocation } from "react-router-dom";
 
-const ItemsPage = ({ items, setCart ,cart}) => {
+const ItemsPage = ({ items, setCart, cart }) => {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const catagoryToShow = () => {
     if (location.pathname === "/") {
       return "Best-Seller";
@@ -14,8 +14,8 @@ const ItemsPage = ({ items, setCart ,cart}) => {
     }
   };
 
-  console.log(catagoryToShow);
-  const catagortName = items.map((item) => console.log(item.name));
+  // console.log(catagoryToShow());
+  // const catagortName = items.map((item) => console.log(item.name));
   const filterData = items.filter((item) =>
     item.catagories.includes(catagoryToShow().toLowerCase())
   );
@@ -23,7 +23,7 @@ const ItemsPage = ({ items, setCart ,cart}) => {
   return (
     <StyledItemsPageWrapper>
       <StyledCategoryName>{catagoryToShow()}</StyledCategoryName>
-      <ItemsList items={filterData} setCart={setCart} cart={cart}/>
+      <ItemsList items={filterData} setCart={setCart} cart={cart} />
     </StyledItemsPageWrapper>
   );
 };

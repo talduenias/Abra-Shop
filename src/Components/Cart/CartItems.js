@@ -6,10 +6,19 @@ const CartItems = ({ cart, setCart }) => {
     const data = cart.filter((cartItem) => cartItem.id !== item.id);
     setCart([...data]);
   };
+
+  console.log(cart);
+
   return (
     <StyledCartItemsWrapper>
-      {cart.map((item) => (
-        <CartItem item={item} handleRemove={handleRemove} />
+      {cart.map((item, index) => (
+        <CartItem
+          key={index}
+          item={item}
+          handleRemove={handleRemove}
+          cart={cart}
+          setCart={setCart}
+        />
       ))}
     </StyledCartItemsWrapper>
   );

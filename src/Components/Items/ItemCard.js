@@ -1,29 +1,39 @@
 import styled from "styled-components";
 import Button from "../Common/Button";
 import { deviceSize } from "../../constants";
-import { useEffect, useState } from "react";
+import { isValidElement, useEffect, useState } from "react";
 const ItemCard = ({ item, setCart, cart }) => {
+  const [disabled, setDisabled] = useState(false);
+
   const addToBag = (item) => {
     const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
-    console.log(itemIndex);
+    console.log(itemIndex, "findIndex");
+    
     if (itemIndex >= 0) {
-      if (item.quantity > item.order) {
-        cart[itemIndex].order++;
-        console.log(item);
-        setCart([...cart]);
-      }
-    } else {
-      item.order++;
-      setCart((prevState) => [...prevState, item]);
-    }
-  };
+       if ((item.quantity > item.order)) {
+      
+      cart[itemIndex].order++
+      setCart([...cart]);
+      alert("out of stock");
+    } else if(item.quantity = item.order){
+      setDisabled(true);
+
+
+    
+  } else {
+    item.order = 1;
+    setCart((prevState) => [...prevState, item]);
+  }
   return (
     <>
       <StyledItemWrapper>
         <StyledItemImage src={item.image}></StyledItemImage>
         <StyledItemName>{item.name}</StyledItemName>
         <StyledItemPrice>{item.price}</StyledItemPrice>
-        <StyledAddToBagButton onClick={() => addToBag(item)}>
+        <StyledAddToBagButton
+          disabled={disabled}
+          onClick={() => addToBag(item)}
+        >
           ADD TO BAG
         </StyledAddToBagButton>
       </StyledItemWrapper>

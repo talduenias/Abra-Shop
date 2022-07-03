@@ -57,7 +57,7 @@ function App() {
             })}
           </Routes>
 
-          <CartPage cart={cart} setCart={setCart} />
+          <CartPage cart={cart} setCart={setCart} items={items} />
         </StyledContentWrapper>
       </div>
     </BrowserRouter>
