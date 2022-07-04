@@ -26,7 +26,7 @@ const CartItem = ({ item, handleRemove, cart, setCart }) => {
     console.log(cart, "cart");
     // alert("go to trash");
   };
-  console.log(item.order);
+  // console.log(item.order);
   return (
     <StyledCartItemWrapper>
       <StyledCartItemImage src={item.image}></StyledCartItemImage>

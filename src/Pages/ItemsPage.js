@@ -19,6 +19,7 @@ const ItemsPage = ({ items, setCart, cart }) => {
   const filterData = items.filter((item) =>
     item.catagories.includes(catagoryToShow().toLowerCase())
   );
+  // console.log(catagoryToShow());
 
   return (
     <StyledItemsPageWrapper>

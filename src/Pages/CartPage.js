@@ -7,12 +7,17 @@ import ItemCard from "../Components/Items/ItemCard";
 import { useEffect, useState } from "react";
 import CartItems from "../Components/Cart/CartItems";
 const CartPage = ({ cart, setCart, items }) => {
-  // let totalPrice = ["0"];
-  // const [total, setTotal] = useState([totalPrice]);
-  // const subTotal = () => {
-  //   cart.map((item) => totalPrice.push(item.price));
-  // };
-  // setTotal(totalPrice);
+  // console.log(cart);
+  // const price = cart.price;
+
+  console.log(items);
+
+  const subTotal = cart.reduce((total, cartItem) => {
+    return total + cartItem.price * cartItem.order;
+  }, 0);
+  console.log(cart.price);
+  console.log(`subTotal:${subTotal}`);
+  console.log(cart);
 
   return (
     <StyledCartWrapper>
@@ -28,7 +33,7 @@ const CartPage = ({ cart, setCart, items }) => {
               <StyledTotalWrapper>
                 <StyledSubtotal>SubTotal</StyledSubtotal>
 
-                <StyledSubtotalPrice>ILS</StyledSubtotalPrice>
+                <StyledSubtotalPrice>{subTotal} ILS</StyledSubtotalPrice>
               </StyledTotalWrapper>
               <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
             </StyledCheckoutWrapper>

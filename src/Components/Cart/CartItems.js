@@ -7,7 +7,7 @@ const CartItems = ({ cart, setCart }) => {
     setCart([...data]);
   };
 
-  console.log(cart);
+  // console.log(cart);
 
   return (
     <StyledCartItemsWrapper>

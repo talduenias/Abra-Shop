@@ -26,7 +26,7 @@ const StyledButtonWrapper = styled.button`
 
   :disabled {
     border: solid 1px #808080;
-    background-color: #808080;
+    background-color: red;
     color: #fff;
   }
 `;

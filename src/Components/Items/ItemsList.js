@@ -2,10 +2,10 @@ import styled from "styled-components";
 import ItemCard from "./ItemCard";
 import { deviceSize } from "../../constants";
 import { useEffect, useState } from "react";
-const ItemsList = ({ items, setCart,cart }) => {
+const ItemsList = ({ items, setCart, cart }) => {
   return (
     <ItemsListWrapper>
-      {console.log(items)}
+      {/* {console.log(items)} */}
       {items.map((item, index) => (
         <ItemCard key={index} item={item} cart={cart} setCart={setCart} />
       ))}

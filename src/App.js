@@ -45,9 +45,10 @@ function App() {
 
         <StyledContentWrapper>
           <Routes>
-            {pathLinks.map((path) => {
+            {pathLinks.map((path, i) => {
               return (
                 <Route
+                  key={i}
                   path={path}
                   element={
                     <ItemsPage items={items} cart={cart} setCart={setCart} />

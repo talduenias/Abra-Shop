@@ -1,39 +1,37 @@
 import styled from "styled-components";
 import Button from "../Common/Button";
+import { useState } from "react";
+
 import { deviceSize } from "../../constants";
-import { isValidElement, useEffect, useState } from "react";
+
 const ItemCard = ({ item, setCart, cart }) => {
   const [disabled, setDisabled] = useState(false);
 
   const addToBag = (item) => {
     const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
-    console.log(itemIndex, "findIndex");
-    
+    // console.log(itemIndex, "findIndex");
+
     if (itemIndex >= 0) {
-       if ((item.quantity > item.order)) {
-      
-      cart[itemIndex].order++
-      setCart([...cart]);
-      alert("out of stock");
-    } else if(item.quantity = item.order){
-      setDisabled(true);
+      if (item.quantity > item.order) {
+        cart[itemIndex].order++;
+        setCart([...cart]);
+      } else if ((item.quantity = item.order)) {
+        setDisabled(true);
 
-
-    
-  } else {
-    item.order = 1;
-    setCart((prevState) => [...prevState, item]);
-  }
+        alert("out of stock");
+      }
+    } else {
+      item.order = 1;
+      setCart((prevState) => [...prevState, item]);
+    }
+  };
   return (
     <>
       <StyledItemWrapper>
         <StyledItemImage src={item.image}></StyledItemImage>
         <StyledItemName>{item.name}</StyledItemName>
         <StyledItemPrice>{item.price}</StyledItemPrice>
-        <StyledAddToBagButton
-          disabled={disabled}
-          onClick={() => addToBag(item)}
-        >
+        <StyledAddToBagButton onClick={() => addToBag(item)}>
           ADD TO BAG
         </StyledAddToBagButton>
       </StyledItemWrapper>
@@ -73,6 +71,11 @@ const StyledItemPrice = styled.span`
   margin-bottom: 16px;
 `;
 const StyledAddToBagButton = styled(Button)`
+  :disabled {
+    border: solid 1px #808080;
+    background-color: red;
+    color: #fff;
+  }
   @media (max-width: ${deviceSize.mobile}) {
     padding: 8px 0;
     font-size: 14px;

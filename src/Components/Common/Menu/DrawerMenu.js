@@ -16,8 +16,9 @@ const DrawerMenu = ({ activeId, menuItems, onClose, onItemChanged }) => {
         ></StyledCloseButton>
       </DrawerMenuWrapper>
       <StyledMenuItemsWrapper>
-        {menuItems.map((item) => (
+        {menuItems.map((item, i) => (
           <StyledMenuItem
+            key={i}
             to={`/${item.name}`}
             onClick={() => {
               onItemChanged(item);
